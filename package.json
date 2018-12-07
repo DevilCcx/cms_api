@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "babel ./ -d ./api --ignore node_modules/,api/",
-    "api": "yarn run babel && pm2 start api/app.js"
+    "api": "yarn run babel && pm2 start api/app.js",
+    "stop": "pm2 stop api/app.js"
   },
   "repository": {
     "type": "git",
