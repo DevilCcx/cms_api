@@ -24,7 +24,7 @@ export default (ctx, next) => {
     if (name !== db.auth.name && pwd !== db.auth.pwd) {
         res = ApiResponse.formatError(-1, '用户名或密码错误')
     } else {
-        let options = { expiresIn: 6 };
+        let options = { expiresIn: '8h' };
         res = ApiResponse.formatBody({
             access_token: getToken(name, db.auth.secret, options)
         })
