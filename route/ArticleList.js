@@ -9,7 +9,7 @@ export default (ctx, next) => {
     let params = ctx.query;
 
     //博客文章路径
-    let path = config.article_dir+'/*.md';
+    let path = params.path+'/*.md';
 
     //文章信息
     let files = ls('-l', path);
