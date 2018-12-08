@@ -133,16 +133,44 @@ let createFile = async function (path, filename, content) {
     }
 };
 
+/**
+ * 文件移动
+ *
+ * @param file
+ * @param newPath
+ * @returns {Promise<*>}
+ */
 let moveFile = async function (file, newPath) {
     //新路径
     let newFile = await getPath(newPath, _path.basename(file));
     return await rename(file, newFile)
 };
 
+/**
+ * 图片保存
+ *
+ * @param path
+ * @param name
+ * @param dataBuffer
+ * @returns {Promise<*>}
+ */
+let createImage = async function (path, name, dataBuffer) {
+    //判断目录是否存在
+    let stats = await getStat(path, false);
+    if (!stats) {
+        await mkdir(path);
+    }
+
+    //存在则抛出异常
+    let options = {flag: 'wx'};
+    let file = await getPath(path, name);
+    return await write(file, dataBuffer, options)
+};
 
 export {
     createFile,
     readFile,
-    moveFile
+    moveFile,
+    createImage
 }
 
