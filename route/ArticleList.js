@@ -1,7 +1,6 @@
 const _path = require('path');
 const moment = require('moment');
 import {ls} from '../tool/ShellJs.js';
-import config from '../koa.config.js';
 import ApiResponse from '../tool/ApiResponse.js'
 
 export default (ctx, next) => {
