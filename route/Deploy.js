@@ -1,5 +1,6 @@
 import ApiResponse from '../tool/ApiResponse.js';
 import {deploy} from '../tool/ShellJs.js';
+import {git} from "../tool/ShellJs";
 
 export default async (ctx, next) => {
     //获取参数
@@ -16,6 +17,11 @@ export default async (ctx, next) => {
             res = ApiResponse.formatError(-1, err)
         }
     );
+
+    //git
+    if (0 === res.code) {
+        await git(path)
+    }
     ctx.response.body = res;
 
 }

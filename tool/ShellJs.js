@@ -17,7 +17,7 @@ const execCommand = function (command) {
 };
 
 /**
- * exec
+ * deploy
  *
  * @param dir 工作目录
  * @param command 命令
@@ -25,13 +25,25 @@ const execCommand = function (command) {
  */
 const deploy = async function (dir, command) {
     await shell.cd(dir);
-    return await execCommand(command)
-    // await shell.exec(command, {async: true}, (err, stdout, stderr) => {
-    //     if ( '');
-    // });
+    return await execCommand(command);
 };
+
+/**
+ * git
+ *
+ * @param dir 工作目录
+ * @returns {*}
+ */
+const git = async function (dir) {
+    await shell.cd(dir);
+    await execCommand('git add -A');
+    await execCommand('git commit -am "auto commit"');
+    return await execCommand('git push');
+};
+
 
 export {
     ls,
-    deploy
+    deploy,
+    git
 }
