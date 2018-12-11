@@ -3,7 +3,7 @@ import {createFile} from '../services/Fs.js';
 
 export default async (ctx, next) => {
     //获取参数
-    let params = ctx.query;
+    let params = ctx.request.body;
     let filename = params.title;
     let content = params.content;
     let path = params.path;
